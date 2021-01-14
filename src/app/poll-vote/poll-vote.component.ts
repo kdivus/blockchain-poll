@@ -18,6 +18,7 @@ export class PollVoteComponent implements OnInit {
     })
   }
   ngOnInit(): void {
+    this.generateChart();
   }
 
   submitForm() {
@@ -25,6 +26,44 @@ export class PollVoteComponent implements OnInit {
   }
 
   generateChart() {
-    
+    const options: ApexCharts.ApexOptions = {
+        series: [{
+          name: "Desktops",
+          data: [10, 41, 35]
+      }],
+        chart: {
+        height: 350,
+        type: 'line',
+        zoom: {
+          enabled: false
+        }
+      },
+      dataLabels: {
+        enabled: false
+      },
+      stroke: {
+        curve: 'straight'
+      },
+      title: {
+        text: 'Title',
+        align: 'left'
+      },
+      grid: {
+        row: {
+          colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+          opacity: 0.5
+        },
+      },
+      xaxis: {
+        categories: ['Mon', 'Tue', 'Wed'],
+      }
+    };
+
+
+
+    //const chart = new ApexCharts(document.getElementById('poll-results'), options);
+    const chart = new ApexCharts(document.querySelector("#poll-results"), options);
+    chart.render();
+
   }
 }
