@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import ApexCharts from 'apexcharts';
 
@@ -7,9 +7,12 @@ import ApexCharts from 'apexcharts';
   templateUrl: './poll-vote.component.html',
   styleUrls: ['./poll-vote.component.css']
 })
-export class PollVoteComponent implements OnInit {
+export class PollVoteComponent implements AfterViewInit {
 
-  options = ["Monday", "Tuesday", "Wednesday"];
+  @Input() voted: boolean = false;
+  @Input() options: string[] = [];
+  @Input() results: number[] = [];
+  @Input() question: string[] = [];
 
   voteForm!: FormGroup;
   constructor(private fb: FormBuilder) {
@@ -17,9 +20,11 @@ export class PollVoteComponent implements OnInit {
       selected: this.fb.control('', [Validators.required]),
     })
   }
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
+    if(this.voted) {
     this.generateChart();
   }
+}
 
   submitForm() {
     console.log(this.voteForm.value);
@@ -28,8 +33,8 @@ export class PollVoteComponent implements OnInit {
   generateChart() {
     const options: ApexCharts.ApexOptions = {
         series: [{
-          name: "Desktops",
-          data: [10, 41, 35]
+          //name: "Desktops",
+          data: this.results
       }],
         chart: {
         height: 350,
@@ -55,7 +60,7 @@ export class PollVoteComponent implements OnInit {
         },
       },
       xaxis: {
-        categories: ['Mon', 'Tue', 'Wed'],
+        categories: this.options,
       }
     };
 
