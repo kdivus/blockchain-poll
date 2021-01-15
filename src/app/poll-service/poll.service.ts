@@ -2,9 +2,7 @@ import { Injectable } from '@angular/core';
 import { off } from 'process';
 import { from, Observable } from 'rxjs';
 import { delay } from 'rxjs/operators';
-//import { Observable } from "rxjs/Observable";
-//import "rxjs/add/observable/of";
-import { Poll, PollForm } from '../types';
+import { Poll, PollForm, PollVote } from '../types';
 import { of } from 'rxjs/internal/observable/of';
 
 @Injectable({

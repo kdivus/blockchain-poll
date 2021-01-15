@@ -10,6 +10,11 @@ export interface PollForm {
   thumbnail: string; // https://image.png
 }
 
+export interface PollVote {
+  id: number;
+  vote:number;
+}
+
 export interface Voter {
   id: string;
   voted: number;

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { PollService } from './poll-service/poll.service';
-import { Poll, PollForm } from './types';
+import { Poll, PollForm, PollVote } from './types';
 
 @Component({
   selector: 'app-root',
@@ -27,6 +27,10 @@ setActivePoll(poll: null) {
 
 handlePollCreate(poll: PollForm) {
   this.ps.createPoll(poll);
+}
+
+handlePollVote(pollVoted: PollVote) {
+  this.ps.vote(pollVoted.id, pollVoted.vote);
 }
 
 }
