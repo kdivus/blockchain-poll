@@ -4,7 +4,7 @@ import { from, Observable } from 'rxjs';
 import { delay } from 'rxjs/operators';
 //import { Observable } from "rxjs/Observable";
 //import "rxjs/add/observable/of";
-import { Poll } from '../types';
+import { Poll, PollForm } from '../types';
 import { of } from 'rxjs/internal/observable/of';
 
 @Injectable({
@@ -39,7 +39,7 @@ export class PollService {
     console.log(pollId, voteNumber)
   }
 
-  createPoll(question: string, thumbnail: string, options:string[]) {
-    console.log(question, thumbnail, options);
+  createPoll(poll: PollForm) {
+    console.log(poll);
   }
 }

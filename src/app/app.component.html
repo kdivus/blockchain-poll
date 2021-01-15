@@ -8,7 +8,7 @@
   <p class="lead text-muted">Powered By Blockchain</p>
 </section>
 
-<app-poll-create *ngIf="showForm"></app-poll-create>
+<app-poll-create *ngIf="showForm"  (pollCreated)="handlePollCreate($event)"></app-poll-create>
 
 <div class="d-flex">
   <div class="container poll-list">

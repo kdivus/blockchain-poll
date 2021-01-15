@@ -14,6 +14,8 @@ export class PollVoteComponent implements AfterViewInit {
   @Input() results: number[] = [];
   @Input() question: string[] = [];
 
+  
+
   voteForm!: FormGroup;
   constructor(private fb: FormBuilder) {
     this.voteForm = this.fb.group({
